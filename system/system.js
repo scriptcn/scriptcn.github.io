@@ -1,4 +1,4 @@
-setTimeout(function(){
+$(function(){
 	$('.code').html(function(){
 		return $(this).html().replace(/([\w-]+)(\s*=+\s*['"]*)([^"';,{]+)/gi, function(a, b, c, d) {
 			return "<font color='green'><b><i>" + b + "</i></b></font>" + c + "<font color='red'>" + d + "</font>";
@@ -8,4 +8,4 @@ setTimeout(function(){
 			return "<font color='#c4c400'><b><i>" + b + "</i></b></font>(<font color='#a6a6d2'><b>" + c + "</b></font>";
 		});
 	});
-}, 200);
+});
