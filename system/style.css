@@ -6,7 +6,7 @@ li {list-style:none;}
 a:active, a:link, a:visited {text-decoration:none;color:#3366cc;}
 a:hover {text-decoration: underline;color:red;}
 .head {height:70px;padding:5px;width:80%;text-align:left;margin:auto;background:url(../images/node.png) no-repeat right;}
-.head h1 {margin:0;padding:0;font-size:28px;line-height:70px;/*background:url(../images/logo.png) no-repeat right 200px center;*/}
+.head h1 {margin:0;padding:0;font-size:28px;line-height:70px;background:url(../images/logo.png) no-repeat right 200px center;}
 .head sub {background:#aaa;color:#fff;}
 .menu {background:#f1f1f1;height:50px;margin:0 auto 10px;padding:5px auto;border-bottom:1px solid #ddd;}
 .menu ul {width:80%;text-align:left;margin:0 auto;}
