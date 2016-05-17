@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="system/style.css" />
+<title>Nodejs.Asp - 模版</title>
+</head>
+<body>
+<script type="text/javascript" src="system/jquery.min.js"></script>
+<script type="text/javascript" src="system/system.js"></script>
+<div class="head"><h1>Nodejs.Asp - <sub>模版</sub></h1></div>
+<div class="menu">
+	<ul>
+		<li><a href='index'>关于</a></li>
+		<li><a href='form'>表单</a></li>
+		<li><a href='upload'>上传</a></li>
+		<li class='r'><a href='list?action=tpl&mode=test'>模版</a></li>
+	</ul>
+</div>
+<div class="main">
+<h2>Output:</h2>
+<div class="pre">
+	<div style="color:red;">{"action":"tpl","mode":"test"}</div>
+win32<br />cookies:{"SessionID":"44d31971569f38c40a4d11c7a00d300d","key":"中文汉字","key2":"value"}<br />admin<br />true<br />
+	<ul>
+<li>中文汉字+a:1</li><li>中文汉字+b:2</li><li>中文汉字+c:3</li>application<br />no
+	</ul>
+<div>模版</div>
+
+
+	<div>0
+this is : 0</div>
+	<div>1
+this is : 1</div>
+	<div>2
+this is : 2</div>
+	<div>3
+this is : 3</div>
+	<div>4
+this is : 4</div>
+</div>
+	<h2>Source:</h2>
+	<div class="pre code">&lt;%<br />var Title = "Nodejs.Asp";<br />var Name = "模版";<br />%><br />&lt;!DOCTYPE html><br />&lt;html><br />&lt;head><br />&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><br />&lt;link type="text/css" rel="stylesheet" href="system/style.css" /><br />&lt;title>{$Title} - &lt;%=Name%>&lt;/title><br />&lt;/head><br />&lt;body><br />&lt;!--include file="head.html"--><br />&lt;div class="main"><br />&lt;h2>Output:&lt;/h2><br />&lt;div class="pre"><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div style="color:red;">{$JSON.stringify(Request.QueryString);}&lt;/div><br />&lt;%<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(require("os").platform());<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("&lt;br />");<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookies('key', '中文汉字');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cookies('key2', 'value');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("cookies:%s", JSON.stringify(Cookies()));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("&lt;br />");<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session('login', 'admin');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Session('author', 'biyuan');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(Session('login'));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo('&lt;br />');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo(Session.del('login'));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo('&lt;br />');<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application('sys', 'application');<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Application('login', 'applogin');<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var list = {a : 1, b : 2, c : 3};<br />%><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul><br />&lt;%<br />for(var i in list) {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("&lt;li>%s+" + i + ":" + list[i] + "&lt;/li>", Cookies('key'));<br />}<br />Response.Write(Application('sys'));<br />Application.del('sys');<br />echo("&lt;br />");<br />echo(Application('sys') || "no");<br />%><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul><br />&lt;%<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(Name == '模版') {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response.Write("&lt;div>%s&lt;/div>", Name);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else if(Name == 'rimifon') {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response.Write("&lt;div>{Name}&lt;/div>");<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;} else {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("&lt;div>false&lt;/div>");<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />%><br /><br />&lt;%for(var i = 0; i &lt; 5; i ++) {%><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div>{$i}<br />&lt;%<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Response.Write("this %s : %s&lt;/div>", 'is', i);<br />}<br />%><br />&lt;/div><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2>Source:&lt;/h2><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="pre code">&lt;%echo(fs.readFileSync('list.node').toString().replace(/&lt;/g, "&lt;").replace(/\r\n/g, "&lt;br />").replace(/\t/g, Array(8).join("&nbsp;")));%>&lt;/div><br />&lt;/div><br />&lt;!--include file="foot.html"--><br />&lt;/body><br />&lt;/html></div>
+</div>
+<div class="foot">
+	本页面基于<a href='https://github.com/scriptcn/Nodejs.Asp' target='_blank'>Nodejs.Asp</a>构建
+	&nbsp;您的IP:127.0.0.1&nbsp;当前服务器时间:2016-05-12 14:45:39
+</div>
+</body>
+</html>
